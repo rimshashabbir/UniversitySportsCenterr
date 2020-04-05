@@ -30,4 +30,103 @@ public class Main {
         mainMethod(booking);
     }
 
+    // Function for booking class
+    public static void bookClass(Booking[] booking){
+        String exercise;
+        boolean searchedByClass = false;
+        System.out.println("Welcome User, please book a class");
+        System.out.println("Enter date(i.e 25 April 2020) or exercise name");
+        Scanner exerciseScanner = new Scanner(System.in);
+        exercise = exerciseScanner.nextLine();
+        System.out.println("Searching data....");
+
+        for(int i = 0; i<booking.length; i++){
+            if(booking[i].getDate().equals(exercise.toString()) || booking[i].getClass1().equals(exercise.toString()) || booking[i].getClass2().equals(exercise.toString()) || booking[i].getClass3().equals(exercise.toString())){
+                if(booking[i].getDate().equals(exercise.toString())){
+                    booking[i].printTimeTable();
+                    System.out.println("Choose Class: ");
+                    String className = exerciseScanner.nextLine();
+                    if(booking[i].getClass1().equals(className.toString()) || booking[i].getClass2().equals(className.toString()) || booking[i].getClass3().equals(className.toString())){
+                        System.out.println("Enter your name: ");
+                        String studentName = exerciseScanner.nextLine().toLowerCase();
+                        System.out.println("Do you want to confirm your booking? Type Yes or No!");
+                        String stringConfirm = exerciseScanner.nextLine().toLowerCase();
+                        if(stringConfirm.equals("yes")){
+                            booking[i].setBooking(className, studentName);
+                            System.out.println("Enter Back to book another class or Main to go to main menu");
+                            String menu = exerciseScanner.nextLine().toLowerCase();
+                            if(menu.equals("back")){
+                                bookClass(booking);
+                            }else if(menu.equals("main")){
+                                mainMethod(booking);
+                            }else{
+                                mainMethod(booking);
+                            }
+                        }else{
+                            System.out.println("You are redirected to main menu");
+                            mainMethod(booking);
+                        }
+                    }else {
+                        System.out.println("This class is not a part of this schedule");
+                        System.out.println("Enter Back to book another class or Main to go to main menu");
+                        String menu = exerciseScanner.nextLine().toLowerCase();
+                        if(menu.equals("back")){
+                            bookClass(booking);
+                        }else if(menu.equals("main")){
+                            mainMethod(booking);
+                        }else{
+                            mainMethod(booking);
+                        }
+                    }
+                }else{
+                    System.out.println(booking[i].getDate());
+                    searchedByClass = true;
+                }
+            }
+        }
+        if(searchedByClass==true){
+            System.out.println("lalalalal");
+            for(int i =0; i<booking.length; i++){
+                System.out.println("Enter the date(i.e 25 April 2020) in which you want to attend " + exercise.toString());
+                String date = exerciseScanner.nextLine();
+                if(booking[i].getDate().equals(date.toString())) {
+                    booking[i].printTimeTable();
+                    if(booking[i].getClass1().equals(exercise.toString()) || booking[i].getClass2().equals(exercise.toString()) || booking[i].getClass3().equals(exercise.toString())) {
+                        System.out.println("Enter your name: ");
+                        String studentName = exerciseScanner.nextLine().toLowerCase();
+                        System.out.println("Do you want to confirm your booking? Type Yes or No!");
+                        String stringConfirm = exerciseScanner.nextLine().toLowerCase();
+                        if (stringConfirm.equals("yes")) {
+                            booking[i].setBooking(exercise.toString(), studentName);
+                            System.out.println("Enter Back to book another class or Main to go to main menu");
+                            String menu = exerciseScanner.nextLine().toLowerCase();
+                            if (menu.equals("back")) {
+                                bookClass(booking);
+                            } else if (menu.equals("main")) {
+                                mainMethod(booking);
+                            } else {
+                                mainMethod(booking);
+                            }
+                        } else {
+                            System.out.println("You are redirected to main menu");
+                            mainMethod(booking);
+                        }
+                    }else {
+                        System.out.println("This class is not a part of this schedule");
+                        System.out.println("Enter Back to book another class or Main to go to main menu");
+                        String menu = exerciseScanner.nextLine().toLowerCase();
+                        if(menu.equals("back")){
+                            bookClass(booking);
+                        }else if(menu.equals("main")){
+                            mainMethod(booking);
+                        }else{
+                            mainMethod(booking);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    // Function for booking class end here..
+
 }
