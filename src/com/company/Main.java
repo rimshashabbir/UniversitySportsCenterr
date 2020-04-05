@@ -242,4 +242,53 @@ public class Main {
             bookClass(bookings);
         }
     }
+
+    public static void showMonthlyChampionReport(Booking[] bookings){
+        Scanner reportScanner = new Scanner(System.in);
+        System.out.println("Please enter the number for month to view the report i.e \"4\" for April");
+        int monthNumber = reportScanner.nextInt();
+        String monthName = reportScanner.nextLine();
+        if(monthNumber==1){
+            monthName = "January";
+        } else if(monthNumber==2){
+            monthName = "Feburary";
+        } else if(monthNumber==3){
+            monthName = "March";
+        } else if(monthNumber==4){
+            monthName = "April";
+        } else if(monthNumber==5){
+            monthName = "May";
+        } else if(monthNumber==6){
+            monthName = "June";
+        } else if(monthNumber==7){
+            monthName = "July";
+        } else if(monthNumber==8){
+            monthName = "August";
+        } else if(monthNumber==9){
+            monthName = "September";
+        } else if(monthNumber==10){
+            monthName = "October";
+        } else if(monthNumber==11){
+            monthName = "November";
+        }else if(monthNumber==12){
+            monthName = "December";
+        }else{
+            mainMethod(bookings);
+        }
+        for(int i = 0; i<bookings.length; i++){
+            if(bookings[i].getMonth().equals(monthName.toString()) ){
+                bookings[i].monthlyChampionReports();
+            }
+        }
+        System.out.println("Enter Main to go to main menu, New to make a new booking");
+        String menu = reportScanner.nextLine().toLowerCase();
+        if(menu.equals("main")){
+            mainMethod(bookings);
+        }
+        if(menu.equals("new")){
+            bookClass(bookings);
+        }
+    }
+
 }
+
