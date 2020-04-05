@@ -290,5 +290,14 @@ public class Main {
         }
     }
 
+    public static void printCalender(Booking[] bookings){
+        for(int i=0; i< bookings.length; i++){
+            System.out.println( "Date is "+bookings[i].getDate()+ " and classes held are 1) "+ bookings[i].getClass1() + " 2) "+ bookings[i].getClass2() + " 3) "+ bookings[i].getClass3());
+        }
+        System.out.println("Redirecting to main menu\n");
+        mainMethod(bookings);
+    }
+
+
 }
 
