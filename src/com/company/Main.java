@@ -129,4 +129,41 @@ public class Main {
     }
     // Function for booking class end here..
 
+    //Function to update bookings
+    public static void changeBookings(Booking[] booking){
+        boolean  bookingExists = false;
+        System.out.println("Welcome User, Type your name to search your bookings or Main to go back to main menu");
+        Scanner changeScanner = new Scanner(System.in);
+        String name = changeScanner.nextLine().toLowerCase();
+        if(name.equals("main")){
+            mainMethod(booking);
+        }
+        for(int i = 0; i < booking.length; i++){
+            booking[i].printBookings(name);
+        }
+        System.out.println("Enter date for the booking to be changed or Main to go back to main menu");
+        String date =  changeScanner.nextLine();
+        if(date.toLowerCase().equals("main")){
+            mainMethod(booking);
+        }
+        System.out.println("Enter class name for the booking or Main to go back to main menu");
+        String className = changeScanner.nextLine();
+        if(className.toLowerCase().equals("main")){
+            mainMethod(booking);
+        }
+        for(int i = 0; i < booking.length; i++){
+            booking[i].removeBookings(name, date, className);
+        }
+        System.out.println("Enter Main to go to main menu, New to make a new booking or Main to go back to main menu");
+        String menu = changeScanner.nextLine().toLowerCase();
+        if(menu.equals("main")){
+            mainMethod(booking);
+        }
+        if(menu.equals("new")){
+            bookClass(booking);
+        }
+    }
+    //End here
+
+
 }
