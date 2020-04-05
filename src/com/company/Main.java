@@ -165,5 +165,35 @@ public class Main {
     }
     //End here
 
+    //Function to attend a class
+    public static void attendClass(Booking[] booking){
+        System.out.println("Welcome User, please type your name to view your bookings");
+        Scanner attendScanner = new Scanner(System.in);
+        String name = attendScanner.nextLine().toLowerCase();
+        for(int i = 0; i < booking.length; i++){
+            booking[i].printBookings(name);
+        }
+        System.out.println("Enter date to attend booking or Main to go back to main menu");
+        String date =  attendScanner.nextLine();
+        if(date.toLowerCase().equals("main")){
+            mainMethod(booking);
+        }
+        System.out.println("Enter class name for the booking or Main to go back to main menu");
+        String className = attendScanner.nextLine();
+        if(className.toLowerCase().equals("main")){
+            mainMethod(booking);
+        }
+        for(int i = 0; i < booking.length; i++){
+            booking[i].attendAndRate(name, date, className);
+        }
+        System.out.println("Enter Main to go to main menu, New to make a new booking or Main to go back to main menu");
+        String menu = attendScanner.nextLine().toLowerCase();
+        if(menu.equals("main")){
+            mainMethod(booking);
+        }
+        if(menu.equals("new")){
+            bookClass(booking);
+        }
+    }
 
 }
