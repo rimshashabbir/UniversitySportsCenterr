@@ -298,6 +298,54 @@ public class Main {
         mainMethod(bookings);
     }
 
+    // Function to provide all functionalities
+    public static void mainMethod(Booking[] booking){
+        System.out.println("Please select what you would like to do");
+        System.out.println("00) View the calendar for scheduled classes");
+        System.out.println("1) Book a group exercise class");
+        System.out.println("2) Want to change your booking");
+        System.out.println("3) Attend a booked class");
+        System.out.println("4) View Monthly class report");
+        System.out.println("5) View Monthly champion report");
+        System.out.println("Enter -1 to exit the system\n");
+
+        Scanner scanner = new Scanner(System.in);
+        int userChoice = 0;
+
+        System.out.println("Enter your choice i.e 1 or 2 or 3...");
+        userChoice = scanner.nextInt();
+
+
+        switch (userChoice) {
+            case 00:
+                System.out.println("Calendar:");
+                printCalender(booking);
+            case -1:
+                System.out.println("Application exited!");
+                System.exit(1);
+            case 1:
+                bookClass(booking);
+                break;
+            case 2:
+                changeBookings(booking);
+                break;
+            case 3:
+                attendClass(booking);
+                break;
+            case 4:
+                System.out.println("Welcome User, you will view Monthly class report");
+                showMontlyClassReport(booking);
+                break;
+            case 5:
+                System.out.println("Welcome User, you will view Monthly champion report");
+                showMonthlyChampionReport(booking);
+                break;
+            default:
+                mainMethod(booking);
+                break;
+        }
+    }
+    // Funtion for all functionalities ends here...
 
 }
 
